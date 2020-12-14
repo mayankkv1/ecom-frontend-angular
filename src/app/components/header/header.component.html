@@ -1,0 +1,46 @@
+<div>
+    <nav id="top-nav-bar"> 
+        <ul id="nav-left">
+            <li [ngClass]="['logo']">
+                    <a [routerLink]="['']">LOGO</a>
+            </li>
+        </ul>
+        
+        <div>
+            <form>
+                <mat-form-field>
+                  <mat-label>Search...</mat-label>
+                  <input matInput placeholder="Ex. Book">
+                </mat-form-field>
+            </form>                  
+        </div>
+        
+            <div [ngClass]="['basketBlk']">
+                <div [ngClass]="['basketIconBlk']">
+                    <mat-icon [ngClass]="['cart_icon']">shopping_basket</mat-icon>
+                    <span>Items: {{cartItemsCount}} & Amount: {{cartItemsAmount}}</span>         
+                </div>              
+            </div>
+
+        <!-- <ul id="nav-right">
+            <li *ngIf="!isLoggedIn"><a [routerLink]="['register']">Register</a></li>
+            <li *ngIf="isLoggedIn"><a href="javascript:void(0)" (click)="logout()">Logout</a></li>
+        </ul> -->
+    </nav>
+
+    <nav id="nav-bar"> 
+        <ul id="nav-left">
+            <li><a [routerLink]="['']">Home</a></li>
+            <li><a [routerLink]="['products']">Product</a></li>
+            <li><a [routerLink]="['company']">Company</a></li>
+            <li><a [routerLink]="['contact']">Contact</a></li>
+        </ul>
+        
+        <ul id="nav-right">
+            <li *ngIf="!isLoggedIn"><a [routerLink]="['login']">Login</a></li>
+            <li *ngIf="!isLoggedIn"><a [routerLink]="['register']">Register</a></li>
+            <li *ngIf="isLoggedIn"><a href="javascript:void(0)" (click)="logout()">Logout</a></li>
+        </ul>
+    </nav>
+    
+</div>

@@ -1,0 +1,42 @@
+.flexbox {
+    display: flex;
+  }
+  .navigation {
+    /* background: #adadad; */
+    flex: 0 0 200px;
+    padding: 0 20px;
+  }
+  .content {
+    flex: 1;
+    padding: 0 20px;
+  }
+
+  .navigation ul{
+      list-style: none;
+  }
+
+  .prd{
+    display: inline-block;
+    background: #a5adc4;
+    padding: 10px;
+    margin: 10px;
+
+  }
+
+  .prdImg{
+      width: 100px;
+  }
+
+  .orgPrice{
+      text-decoration: line-through;
+  }
+
+  .prd button{
+    width: 100%;
+    background-color: #16a085;
+    color: #ffffff;
+  }
+
+  .addToCartBtn{
+    cursor: pointer;
+  }

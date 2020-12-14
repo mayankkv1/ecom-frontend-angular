@@ -1,0 +1,23 @@
+<div class="flexbox">
+    <div class="navigation">
+        <h3>Navigation</h3>
+        <ul>
+            <li>Home</li>
+            <li>Product</li>
+            <li>Company</li>
+            <li>Contact</li>
+        </ul>
+    </div>
+    <div class="content">
+        <h3>Content</h3>
+        <div>
+            <div [ngClass]="['prd']" *ngFor="let item of products">
+                <img src="/assets/images/books/{{item.image}}" [ngClass]="['prdImg']"/>
+                <p>{{item.title}}</p>
+                <p><span [ngClass]="['orgPrice']">&euro;{{item.originalPrice}}</span> &euro;{{item.currentPrice}}</p>
+                <button [ngClass]="['addToCartBtn']" (click)="addToCart(item)">Add to cart</button>
+            </div>
+
+        </div>
+    </div>
+  </div>

@@ -1,0 +1,73 @@
+
+<div id="login-box-outer">
+
+<div id="login-box">
+    <div class="left">
+      <h1>Sign up</h1>
+      
+      <!-- <form>
+        <input type="text" name="name" placeholder="Name" />
+        <input type="text" name="email" placeholder="E-mail" />
+        <input type="password" name="password" placeholder="Password" />
+        <input type="password" name="password2" placeholder="Retype password" />
+        
+        <input type="submit" name="signup_submit" value="Sign me up"/>
+
+      </form> -->
+
+      <form [formGroup]="registerForm" (ngSubmit)="register(registerForm)">             
+        <div [ngClass]="['createAccount_listItem']">
+          <input type="text" formControlName="name" placeholder="Your name">
+          <div *ngIf="registerForm.get('name').errors && (registerForm.get('name').touched ||registerForm.get('email').dirty)">
+            <p *ngIf="registerForm.get('name').errors.required" [ngClass]="['err_txt']">Oops, please provide a name!</p>
+          </div>
+        </div>
+
+        <div [ngClass]="['createAccount_listItem']">
+          <input type="text" formControlName="email" placeholder="Your email">
+          <div *ngIf="registerForm.get('email').errors && (registerForm.get('email').touched ||registerForm.get('email').dirty)">
+            <p *ngIf="registerForm.get('email').errors.required" [ngClass]="['err_txt']">Oops, please provide an email!</p>
+            <p *ngIf="registerForm.get('email').errors.email" [ngClass]="['err_txt']">Oops, please provide a valid email!</p>
+          </div>
+        </div>
+  
+        <div [ngClass]="['createAccount_listItem']">
+          <input type="password" formControlName="password" placeholder="Password">
+        <div *ngIf="registerForm.get('password').errors && (registerForm.get('password').touched ||registerForm.get('password').dirty)">
+          <p *ngIf="registerForm.get('password').errors.required" [ngClass]="['err_txt']">Oops, please provide a password!</p>
+          <p *ngIf="registerForm.get('password').errors.minlength" [ngClass]="['err_txt']">Oops, password must be more than 6 characters long!</p>
+        </div>
+      </div>
+
+      <div [ngClass]="['createAccount_listItem']">
+        <input type="password" formControlName="confirmPassword" placeholder="Retype password">
+          <div *ngIf="registerForm.get('confirmPassword').errors && (registerForm.get('confirmPassword').touched ||registerForm.get('confirmPassword').dirty)">
+            <p *ngIf="registerForm.get('confirmPassword').errors.required" [ngClass]="['err_txt']">Oops, please provide a password confirmation!</p>
+            <p *ngIf="registerForm.get('confirmPassword').errors.minlength" [ngClass]="['err_txt']">Oops, password confirmation must be more than 6 characters long!</p>
+            <p *ngIf="registerationForm.get('confirmPassword').errors.confirmPasswordValidator" [ngClass]="['err_txt']">Oops, passwords does not match!</p>
+          </div>  
+        </div>
+
+        <input type="submit" name="signup_submit" value="Sign me up"/>
+      </form>
+
+      <p [ngClass]="['regThanks']" *ngIf="regThanks">
+        Sign up successful. Please login!
+      </p>
+    </div>
+    
+    <div class="right">
+      <h1>Sign in</h1>
+     <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+      <input type="text" formControlName="email" placeholder="Your email">
+      <input type="password" formControlName="password" placeholder="Password">
+      <input type="submit" name="signin_submit" value="Sign in"/>
+    </form>
+      <p [ngClass]="['loginErr']" *ngIf="loginErr">   
+        {{errMsg}}     
+      </p>
+    </div>
+
+    <div class="or">OR</div>
+  </div>
+</div>
