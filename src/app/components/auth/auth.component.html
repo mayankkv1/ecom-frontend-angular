@@ -44,7 +44,7 @@
           <div *ngIf="registerForm.get('confirmPassword').errors && (registerForm.get('confirmPassword').touched ||registerForm.get('confirmPassword').dirty)">
             <p *ngIf="registerForm.get('confirmPassword').errors.required" [ngClass]="['err_txt']">Oops, please provide a password confirmation!</p>
             <p *ngIf="registerForm.get('confirmPassword').errors.minlength" [ngClass]="['err_txt']">Oops, password confirmation must be more than 6 characters long!</p>
-            <p *ngIf="registerationForm.get('confirmPassword').errors.confirmPasswordValidator" [ngClass]="['err_txt']">Oops, passwords does not match!</p>
+            <p *ngIf="registerForm.get('confirmPassword').errors.confirmPasswordValidator" [ngClass]="['err_txt']">Oops, passwords does not match!</p>
           </div>  
         </div>
 
