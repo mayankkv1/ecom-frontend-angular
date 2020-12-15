@@ -11,7 +11,7 @@ import { ErrorService } from './error.service';
   providedIn: 'root'
 })
 export class AuthService {
-   private currentUserSubject: BehaviorSubject<User>;
+    public currentUserSubject: BehaviorSubject<User>;
    public currentUser: Observable<User>;
 
    constructor(private http: HttpClient, private router: Router, private errorService: ErrorService) {
@@ -44,12 +44,17 @@ export class AuthService {
         ;
    }
 
-
    logout() {
-       // remove user from local storage to log user out
-       localStorage.removeItem('currentUser');
-       this.currentUserSubject.next(null);
-       this.router.navigate(['/login']);
+        return this.http.post<any>(`${environment.apiUrl}/auth/logout`,{});
+   }
+
+   getToken(){
+    if(localStorage.getItem('currentUser')!=null){
+       let access_token = JSON.parse(localStorage.getItem('currentUser')).access_token  
+       return access_token      
+    }else{
+        null
+    }
    }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -14,7 +15,7 @@ export class HeaderComponent implements OnInit {
   cartItemsCount:number = 0;
   cartItemsAmount = 0;
 
-  constructor(private authService: AuthService, private productService: ProductService) { 
+  constructor(private authService: AuthService, private productService: ProductService, private router: Router) { 
   }
 
   ngOnInit(): void {  
@@ -43,7 +44,12 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(){
-    this.authService.logout();
+    this.authService.logout().subscribe((res)=>{
+             // remove user from local storage to log user out
+             localStorage.removeItem('currentUser');
+             this.authService.currentUserSubject.next(null);
+             this.router.navigate(['/login']);      
+    });
   }
 
 

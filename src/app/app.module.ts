@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,12 @@ import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,
       multi: true
-    } 
+    },
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi   : true,
+    },
   ],
   bootstrap: [AppComponent]
 })
